@@ -607,13 +607,19 @@ function BSA_PRO_add_admin_stylesheet_and_script() {
 		wp_enqueue_script( 'wp-color-picker' );
 	}
 	wp_register_script('buy_sell_ads_pro_admin_jquery_ui_js_script', plugins_url('frontend/js/jquery-ui.js', __FILE__));
-	wp_enqueue_script('buy_sell_ads_pro_admin_jquery_ui_js_script');
+
 	wp_register_script('buy_sell_ads_pro_admin_js_script', plugins_url('frontend/js/admin-script.js', __FILE__));
-	wp_enqueue_script('buy_sell_ads_pro_admin_js_script');
+
 	wp_register_script('buy_sell_ads_pro_admin_switch_button_js_script', plugins_url('frontend/js/jquery.switchButton.js', __FILE__));
-	wp_enqueue_script('buy_sell_ads_pro_admin_switch_button_js_script');
+
 	wp_register_script('buy_sell_ads_pro_tagsinput_js_script', plugins_url('frontend/js/jquery.tagsinput.min.js', __FILE__));
-	wp_enqueue_script('buy_sell_ads_pro_tagsinput_js_script');
+
+	if ( !admin ) {
+		wp_enqueue_script('buy_sell_ads_pro_admin_jquery_ui_js_script');
+		wp_enqueue_script('buy_sell_ads_pro_admin_js_script');
+		wp_enqueue_script('buy_sell_ads_pro_admin_switch_button_js_script');
+		wp_enqueue_script('buy_sell_ads_pro_tagsinput_js_script');
+	}
 	add_filter( 'https_local_ssl_verify', '__return_true' );
 }
 
